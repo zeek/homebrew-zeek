@@ -15,6 +15,7 @@ class Spicy < Formula
   def install
     mkdir "build" do
       system "cmake", "..", *std_cmake_args,
+                      "-DBUILD_SHARED_LIBS=ON",
                       "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
                       "-DLLVM_ROOT=#{Formula["llvm"].opt_prefix}",
@@ -25,5 +26,9 @@ class Spicy < Formula
 
   test do
     assert_match "clang", shell_output("#{bin}/spicy-config --jit-compiler")
+
+    require "fileutils"
+    File.open("foo.spicy", "w") { |f| f.write("module Foo;") }
+    assert_match "module Foo {", shell_output("#{bin}/spicyc -p foo.spicy")
   end
 end
