@@ -20,13 +20,16 @@ class Spicy < Formula
                       "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
                       "-DLLVM_ROOT=#{Formula["llvm"].opt_prefix}",
-                      "-DHILTI_HAVE_JIT=ON"
+                      "-DHILTI_HAVE_JIT=ON",
+                      "-DZEEK_HAVE_JIT=ON"
       system "make", "install"
     end
   end
 
   test do
     assert_match "clang", shell_output("#{bin}/spicy-config --jit-compiler")
+    assert_match "yes", shell_output("#{bin}/spicy-config --jit-support")
+    assert_match "yes", shell_output("#{bin}/spicy-config --zeek-jit-support")
 
     require "fileutils"
     File.open("foo.spicy", "w") { |f| f.write("module Foo; type Bar = unit {};") }
