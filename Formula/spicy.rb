@@ -21,9 +21,11 @@ class Spicy < Formula
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
                       "-DLLVM_ROOT=#{Formula["llvm"].opt_prefix}",
                       "-DHILTI_HAVE_JIT=ON",
+                      "-DBUILD_ZEEK_PLUGIN=ON",
                       "-DZEEK_HAVE_JIT=ON",
                       "-DZEEK_INSTALL_PLUGIN=ON",
-                      "-DBUILD_TOOLCHAIN=ON"
+                      "-DBUILD_TOOLCHAIN=ON",
+                      "-DHILTI_DEV_PRECOMPILE_HEADERS=OFF"
       system "make", "install"
     end
   end
