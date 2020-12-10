@@ -16,6 +16,7 @@ class Spicy < Formula
     mkdir "build" do
       system "cmake", "..", *std_cmake_args,
                       "-DBUILD_SHARED_LIBS=ON",
+                      "-DCMAKE_C_COMPILER=#{Formula["llvm"].opt_prefix}/bin/clang",
                       "-DCMAKE_CXX_COMPILER=#{Formula["llvm"].opt_prefix}/bin/clang++",
                       "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
