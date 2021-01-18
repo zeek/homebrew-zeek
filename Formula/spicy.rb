@@ -15,6 +15,8 @@ class Spicy < Formula
     mkdir "build" do
       system "cmake", "..", *std_cmake_args,
                       "-DBUILD_SHARED_LIBS=ON",
+                      "-DCMAKE_C_COMPILER=/usr/bin/clang",
+                      "-DCMAKE_CXX_COMPILER=/usr/bin/clang++",
                       "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
                       "-DHILTI_HAVE_JIT=ON",
@@ -28,10 +30,6 @@ class Spicy < Formula
   end
 
   test do
-    assert_match "clang", shell_output("#{bin}/spicy-config --jit-compiler")
-    assert_match "yes", shell_output("#{bin}/spicy-config --jit-support")
-    assert_match "yes", shell_output("#{bin}/spicy-config --zeek-jit-support")
-
     require "fileutils"
     File.open("foo.spicy", "w") { |f| f.write("module Foo; type Bar = unit {};") }
     assert_match "module Foo {", shell_output("#{bin}/spicyc -p foo.spicy")
