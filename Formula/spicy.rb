@@ -9,18 +9,14 @@ class Spicy < Formula
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
-  depends_on "llvm"
   depends_on "zeek"
 
   def install
     mkdir "build" do
       system "cmake", "..", *std_cmake_args,
                       "-DBUILD_SHARED_LIBS=ON",
-                      "-DCMAKE_C_COMPILER=#{Formula["llvm"].opt_prefix}/bin/clang",
-                      "-DCMAKE_CXX_COMPILER=#{Formula["llvm"].opt_prefix}/bin/clang++",
                       "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
-                      "-DLLVM_ROOT=#{Formula["llvm"].opt_prefix}",
                       "-DHILTI_HAVE_JIT=ON",
                       "-DBUILD_ZEEK_PLUGIN=ON",
                       "-DZEEK_HAVE_JIT=ON",
