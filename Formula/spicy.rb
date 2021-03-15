@@ -24,7 +24,8 @@ class Spicy < Formula
                       "-DZEEK_HAVE_JIT=ON",
                       "-DZEEK_INSTALL_PLUGIN=ON",
                       "-DBUILD_TOOLCHAIN=ON",
-                      "-DHILTI_DEV_PRECOMPILE_HEADERS=OFF"
+                      "-DHILTI_DEV_PRECOMPILE_HEADERS=OFF",
+                      "-DBUILD_ZEEK_PLUGIN=OFF"
       system "make", "install"
     end
   end
