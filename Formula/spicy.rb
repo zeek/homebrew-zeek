@@ -9,7 +9,6 @@ class Spicy < Formula
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
-  depends_on "zeek"
 
   def install
     mkdir "build" do
@@ -19,10 +18,6 @@ class Spicy < Formula
                       "-DCMAKE_CXX_COMPILER=/usr/bin/clang++",
                       "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
                       "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
-                      "-DHILTI_HAVE_JIT=ON",
-                      "-DBUILD_ZEEK_PLUGIN=ON",
-                      "-DZEEK_HAVE_JIT=ON",
-                      "-DZEEK_INSTALL_PLUGIN=ON",
                       "-DBUILD_TOOLCHAIN=ON",
                       "-DHILTI_DEV_PRECOMPILE_HEADERS=OFF",
                       "-DBUILD_ZEEK_PLUGIN=OFF"
