@@ -4,7 +4,7 @@ class Spicy < Formula
 
   # Do not use a shallow clone since Spicy's `scripts/autogen-version` used
   # during the build requires some Git history.
-  head "https://github.com/zeek/spicy.git", :shallow => false
+  head "https://github.com/zeek/spicy.git", :shallow => false, :branch => "main"
 
   depends_on "bison" => :build
   depends_on "cmake" => :build
