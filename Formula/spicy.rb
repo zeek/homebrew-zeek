@@ -1,10 +1,16 @@
 class Spicy < Formula
   desc "C++ parser generator for dissecting protocols & files"
   homepage "https://github.com/zeek/spicy"
+  url "https://github.com/zeek/spicy.git",
+    tag: "v1.0.0",
+    revision: "9c883dd473579c39ecee04a79732d2b74d58e0fb",
+    :shallow => false
 
   # Do not use a shallow clone since Spicy's `scripts/autogen-version` used
   # during the build requires some Git history.
-  head "https://github.com/zeek/spicy.git", :shallow => false, :branch => "main"
+  head "https://github.com/zeek/spicy.git",
+    :branch => "main",
+    :shallow => false
 
   depends_on "bison" => :build
   depends_on "cmake" => :build
