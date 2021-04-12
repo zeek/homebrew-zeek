@@ -3,7 +3,7 @@ class Spicy < Formula
   homepage "https://github.com/zeek/spicy"
   url "https://github.com/zeek/spicy.git",
     tag: "v1.0.0",
-    revision: "9c883dd473579c39ecee04a79732d2b74d58e0fb",
+    revision: "51b7aedfacd78111fec2f15d68ca713e8b48bdbb",
     :shallow => false
 
   # Do not use a shallow clone since Spicy's `scripts/autogen-version` used
