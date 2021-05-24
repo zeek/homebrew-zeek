@@ -2,15 +2,15 @@ class Spicy < Formula
   desc "C++ parser generator for dissecting protocols & files"
   homepage "https://github.com/zeek/spicy"
   url "https://github.com/zeek/spicy.git",
-    tag: "v1.0.0",
+    tag:      "v1.0.0",
     revision: "51b7aedfacd78111fec2f15d68ca713e8b48bdbb",
-    :shallow => false
+    shallow:  false
 
   # Do not use a shallow clone since Spicy's `scripts/autogen-version` used
   # during the build requires some Git history.
   head "https://github.com/zeek/spicy.git",
-    :branch => "main",
-    :shallow => false
+    branch:  "main",
+    shallow: false
 
   depends_on "bison" => :build
   depends_on "cmake" => :build
@@ -35,7 +35,7 @@ class Spicy < Formula
     require "fileutils"
     File.open("foo.spicy", "w") { |f| f.write("module Foo; type Bar = unit {};") }
     assert_match "module Foo {", shell_output("#{bin}/spicyc -p foo.spicy")
-    assert shell_output("#{bin}/spicyc -j foo.spicy", 0)
-    assert shell_output("#{bin}/spicy-build foo.spicy", 0)
+    assert shell_output("#{bin}/spicyc -j foo.spicy")
+    assert shell_output("#{bin}/spicy-build foo.spicy")
   end
 end
