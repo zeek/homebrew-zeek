@@ -8,6 +8,12 @@ class Spicy < Formula
   head "https://github.com/zeek/spicy.git",
     branch:  "main"
 
+  bottle do
+    root_url "https://github.com/zeek/spicy/releases/download/v1.2.1"
+    rebuild 1
+    sha256 catalina: "2b5143823af6492eb1e10247e996fe377937574d4c54f5532d7e788261369473"
+  end
+
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
