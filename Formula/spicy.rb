@@ -36,7 +36,7 @@ class Spicy < Formula
   def caveats
     <<~EOS
       In order to speed up JIT, run 'spicy-precompile-headers' after
-      installation. This script places precompiled headers using during
+      installation. This script places precompiled headers used during
       JIT in '$HOME/.cache/spicy'.
     EOS
   end
