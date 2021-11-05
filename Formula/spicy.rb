@@ -12,21 +12,28 @@ class Spicy < Formula
     root_url "https://github.com/zeek/spicy/releases/download/v1.3.0"
     sha256 catalina: "9e36d27c163bed3811474c3962cba9837641a78a63b1b9278bc779f90e8ab703"
   end
+
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
+  depends_on "ccache" => :optional
 
   def install
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args,
-                      "-DBUILD_SHARED_LIBS=ON",
-                      "-DCMAKE_C_COMPILER=/usr/bin/clang",
-                      "-DCMAKE_CXX_COMPILER=/usr/bin/clang++",
-                      "-DFLEX_ROOT=#{Formula["flex"].opt_prefix}",
-                      "-DBISON_ROOT=#{Formula["bison"].opt_prefix}",
-                      "-DBUILD_TOOLCHAIN=ON",
-                      "-DHILTI_DEV_PRECOMPILE_HEADERS=OFF",
-                      "-DBUILD_ZEEK_PLUGIN=OFF"
+      cmake_args = %W[
+        -DBUILD_SHARED_LIBS=ON
+        -DCMAKE_C_COMPILER=/usr/bin/clang
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++
+        -DFLEX_ROOT=#{Formula["flex"].opt_prefix}
+        -DBISON_ROOT=#{Formula["bison"].opt_prefix}
+        -DBUILD_TOOLCHAIN=ON
+        -DHILTI_DEV_PRECOMPILE_HEADERS=OFF
+        -DBUILD_ZEEK_PLUGIN=OFF
+      ]
+
+      cmake_args << "-DHILTI_COMPILER_LAUNCHER=ccache" if build.with? "ccache"
+
+      system "cmake", "..", *std_cmake_args, *cmake_args
       system "make", "install"
     end
   end
