@@ -48,7 +48,7 @@ class Spicy < Formula
 
   test do
     require "fileutils"
-    File.open("foo.spicy", "w") { |f| f.write("module Foo; type Bar = unit {};") }
+    File.write("foo.spicy", "module Foo; type Bar = unit {};")
     assert_match "module Foo {", shell_output("#{bin}/spicyc -p foo.spicy")
     assert shell_output("#{bin}/spicyc -j foo.spicy")
     assert shell_output("#{bin}/spicy-build foo.spicy")
