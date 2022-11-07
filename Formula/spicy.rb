@@ -2,15 +2,15 @@ class Spicy < Formula
   desc "C++ parser generator for dissecting protocols & files"
   homepage "https://github.com/zeek/spicy"
   url "https://github.com/zeek/spicy.git",
-    tag:      "v1.5.1",
-    revision: "10b17c8b2829a47f4a6d7f16454befa56dc396e7"
+    tag:      "v1.5.2",
+    revision: "e6251e1b221a8c78fa6e4ee8440ea1908b5781bf"
 
   head "https://github.com/zeek/spicy.git",
     branch:  "main"
 
   bottle do
-    root_url "https://github.com/zeek/spicy/releases/download/v1.5.1"
-    sha256 catalina: "b34bea03f82b3052ff568647c8060e24c6ced1f167356e7265cd810598bd9972"
+    root_url "https://github.com/zeek/spicy/releases/download/v1.5.2"
+    sha256 monterey: "ea3725fcbd05d47cd864a6c78c43ac966a699d46e90a802a1e9f79c37e18a3d8"
   end
 
   depends_on "bison" => :build
@@ -28,7 +28,6 @@ class Spicy < Formula
         -DBISON_ROOT=#{Formula["bison"].opt_prefix}
         -DBUILD_TOOLCHAIN=ON
         -DHILTI_DEV_PRECOMPILE_HEADERS=OFF
-        -DBUILD_ZEEK_PLUGIN=OFF
       ]
 
       cmake_args << "-DHILTI_COMPILER_LAUNCHER=ccache" if build.with? "ccache"
@@ -43,6 +42,11 @@ class Spicy < Formula
       In order to speed up JIT, run 'spicy-precompile-headers' after
       installation. This script places precompiled headers used during
       JIT in '$HOME/.cache/spicy'.
+
+      Per-module JIT results can be cached with ccache which should speed up
+      subsequent compilations. For that, set
+      'HILTI_CXX_COMPILER_LAUNCHER=ccache' in your environment and make sure
+      ccache is installed.
     EOS
   end
 
