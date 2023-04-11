@@ -16,7 +16,6 @@ class Spicy < Formula
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
-  depends_on "ccache" => :optional
 
   def install
     mkdir "build" do
@@ -29,8 +28,6 @@ class Spicy < Formula
         -DBUILD_TOOLCHAIN=ON
         -DHILTI_DEV_PRECOMPILE_HEADERS=OFF
       ]
-
-      cmake_args << "-DHILTI_COMPILER_LAUNCHER=ccache" if build.with? "ccache"
 
       system "cmake", "..", *std_cmake_args, *cmake_args
       system "make", "install"
