@@ -2,15 +2,15 @@ class Spicy < Formula
   desc "C++ parser generator for dissecting protocols & files"
   homepage "https://github.com/zeek/spicy"
   url "https://github.com/zeek/spicy.git",
-    tag:      "v1.7.0",
-    revision: "62cdbc21a5293fb6f79eab6febed7542e9b453af"
+    tag:      "v1.8.0",
+    revision: "8727fa050a575387986a057c91f806a9a74786f6"
 
   head "https://github.com/zeek/spicy.git",
     branch:  "main"
 
   bottle do
-    root_url "https://github.com/zeek/spicy/releases/download/v1.7.0"
-    sha256 ventura: "2730c40bb9693a97f9349de7f32a3df4ae6c04fe78565a7df9462246abb580de"
+    root_url "https://github.com/zeek/spicy/releases/download/v1.8.0"
+    sha256 ventura: "4e1731954908c51e51a11105f8a3060c84e69006bfd81bae413e010d23bd2f5f"
   end
 
   depends_on "bison" => :build
