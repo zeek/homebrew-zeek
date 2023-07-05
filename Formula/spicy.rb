@@ -2,8 +2,8 @@ class Spicy < Formula
   desc "C++ parser generator for dissecting protocols & files"
   homepage "https://github.com/zeek/spicy"
   url "https://github.com/zeek/spicy.git",
-    tag:      "v1.8.0",
-    revision: "8727fa050a575387986a057c91f806a9a74786f6"
+    tag:      "v1.8.1",
+    revision: "7e074675b994d59050b4468dec145526daa22760"
 
   head "https://github.com/zeek/spicy.git",
     branch:  "main"
