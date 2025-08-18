@@ -9,7 +9,7 @@ class Spicy < Formula
     branch:  "main"
 
   bottle do
-    root_url "https://github.com/zeek/spicy/releases/download/v1.13.2"
+    root_url "https://github.com/zeek/spicy/releases/download/v1.14.0"
     sha256 arm64_sequoia: "ee217aa94d7344b52bdce8b9122d65874d0a89edc25303ec01036bbccbc9e023"
   end
 
